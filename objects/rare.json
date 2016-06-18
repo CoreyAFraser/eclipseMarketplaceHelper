@@ -1,0 +1,112 @@
+{
+	"Zero-Point Source" : {
+		"name" : "Zero-Point Source",
+		"id" : 25,
+		"track" : "Rare", 
+		"cost" : 15, 
+		"minCost" : 10, 
+		"energy" : 12, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Zero-Point Source Ship parts."
+	},
+	"Conifold Field" : {
+		"name" : "Conifold Field",
+		"id" : 26,
+		"track" : "Rare", 
+		"cost" : 5, 
+		"minCost" : 5, 
+		"energy" : -2, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Conifold Field Ship parts. 3 Hull per slot."
+	},
+	"Flux Missile" : {
+		"name" : "Flux Missile",
+		"id" : 27,
+		"track" : "Rare", 
+		"cost" : 11, 
+		"minCost" : 8, 
+		"energy" : -2, 
+		"initiative" : 2, 
+		"descr" : "You may upgrade Flux Missile Ship part. Yellow die missile."
+	},
+	"Interceptor Bay" : {
+		"name" : "Interceptor Bay",
+		"id" : 28,
+		"track" : "Rare", 
+		"cost" : 9, 
+		"minCost" : 7, 
+		"energy" : -2, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Interceptor Bay Ship parts. Each Interceptor Bay Ship Part allows you to move up to two unpinned Interceptors in the ship bay with one Ship 'activation'. After each activation, one or more Interceptors may leave the Interceptor Bay and then be moved by themselves with further Ship activations. When moving Interceptors in the bay, they do not affect pinning. The Interceptors are unloaded from the bay at the end of the Move action. Interceptors are not allowed to have Interceptor Bays."
+	},
+	"Sentient Hull" : {
+		"name" : "Sentient Hull",
+		"id" : 29,
+		"track" : "Rare", 
+		"cost" : 5, 
+		"minCost" : 5, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Sentient Hull Ship parts. 1 Hull and your equipped ships are +1 to hit."
+	},
+	"Antimatter Splitter" : {
+		"name" : "Antimatter Splitter",
+		"id" : 30,
+		"track" : "Rare", 
+		"cost" : 5, 
+		"minCost" : 5, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "Allows you to split damage from Antimatter Cannons freely over several targets (including Missles if you have the Point Defense Technology). You need ot be able to his all the targets with the die roll."
+	},
+	"Neutron Absorber" : {
+		"name" : "Neutron Absorber",
+		"id" : 31,
+		"track" : "Rare", 
+		"cost" : 5, 
+		"minCost" : 5, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "Enemy Neutron Bombs have no effect on you. Note: this does not affect Planta's species weakness"
+	},
+	"Distortion Shield" : {
+		"name" : "Distortion Shield",
+		"id" : 32,
+		"track" : "Rare", 
+		"cost" : 7, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "Enemy missles have a -2 modifer to hit"
+	},
+	"Cloaking Device" : {
+		"name" : "Cloaking Device",
+		"id" : 33,
+		"track" : "Rare", 
+		"cost" : 7, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "Opponents need two ships to pin each of your ships."
+	},
+	"Point Defense" : {
+		"name" : "Point Defense",
+		"id" : 34,
+		"track" : "Rare", 
+		"cost" : 11, 
+		"minCost" : 8, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "After your opponent has rolled and allocated the dive for Missiles of one Ship type, you get to fire all your Cannons once against the incoming Missiles before they hit your fleet. Each die that hits destroys a Missile. Your Computers affect the Point Defense, but your opponent's Shields do not."
+	},
+	"Tractor Beam" : {
+		"name" : "Tractor Beam",
+		"id" : 35,
+		"track" : "Rare", 
+		"cost" : 3, 
+		"minCost" : 2, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "When you have the Tractor Beam Rare Technology, your opponents cannot retreat from battle against you."
+	}
+}

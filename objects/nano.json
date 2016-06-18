@@ -1,0 +1,82 @@
+{
+	"Nanorobots" : {
+		"name" : "Nanorobots",
+		"id" : 17,
+		"track" : "Nano", 
+		"cost" : 2, 
+		"minCost" : 2, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may build one additional Ship or Structure."
+	},
+	"Fusion Drive" : {
+		"name" : "Fusion Drive",
+		"id" : 18,
+		"track" : "Nano", 
+		"cost" : 4, 
+		"minCost" : 3, 
+		"energy" : -2, 
+		"initiative" : 2, 
+		"descr" : "You may upgrade Fusion Drive Ship parts. Equipped Ships can move 2 hexes per move action."
+	},
+	"Advanced Robotics" : {
+		"name" : "Advanced Robotics",
+		"id" : 19,
+		"track" : "Nano", 
+		"cost" : 6, 
+		"minCost" : 4, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You receive one additional influence Discs, placed immediately on your influence track."
+	},
+	"Orbital" : {
+		"name" : "Orbital",
+		"id" : 20,
+		"track" : "Nano", 
+		"cost" : 8, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may build Orbitals. Orbitals can hold one Population cube from the Money or Science track"
+	},
+	"Advanced Labs" : {
+		"name" : "Advanced Labs",
+		"id" : 21,
+		"track" : "Nano", 
+		"cost" : 10, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may place Population Cubes in the advanced Science squares with your colony ships."
+	},
+	"Monolith" : {
+		"name" : "Monolith",
+		"id" : 22,
+		"track" : "Nano", 
+		"cost" : 12, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may build Monoliths."
+	},
+	"Artifact Key" : {
+		"name" : "Artifact Key",
+		"id" : 23,
+		"track" : "Nano", 
+		"cost" : 14, 
+		"minCost" : 7, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You must take 5 Resources of one type for each Artifact on your hexes."
+	},
+	"Wormhole Generator" : {
+		"name" : "Wormhole Generator",
+		"id" : 24,
+		"track" : "Nano", 
+		"cost" : 16, 
+		"minCost" : 8, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may Explore, Influence, and Move through a hex edge that has a Wormhole on just one side."
+	}
+}

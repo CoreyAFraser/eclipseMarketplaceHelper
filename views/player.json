@@ -1,3 +1,0 @@
-{
-	"body" : "<button id='End Turn' onclick='endMyTurn()'>End My Turn</button><button id='passForRound' onclick='passForRound()'>Pass For the Round</button>"
-}

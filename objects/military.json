@@ -1,0 +1,82 @@
+{
+	"Neutron Bomb" : {
+		"name" : "Neutron Bomb",
+		"id" : 1,
+		"track" : "Military", 
+		"cost" : 2, 
+		"minCost" : 2, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may destroy all Population Cubes from the hex without rolling any dice"
+	},
+	"Star Base" : {
+		"name" : "Star Base",
+		"id" : 2,
+		"track" : "Military", 
+		"cost" : 4, 
+		"minCost" : 3, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may build Star Bases"
+	},
+	"Phase Shield" : {
+		"name" : "Phase Shield",
+		"id" : 3,
+		"track" : "Military", 
+		"cost" : 8, 
+		"minCost" : 5, 
+		"energy" : -1, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Phase Shield Ship parts. Opponents are -2 to hit your equiped Ships."
+	},
+	"Advanced Mining" : {
+		"name" : "Advanced Mining",
+		"id" : 4,
+		"track" : "Military", 
+		"cost" : 10, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may place Population Cubes in the advanced Materials squares with your colony ships"
+	},
+	"Plasma Cannon" : {
+		"name" : "Plasma Cannon",
+		"id" : 5,
+		"track" : "Military", 
+		"cost" : 6, 
+		"minCost" : 4, 
+		"energy" : -2, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Plasma Cannon Ship parts. Orange die cannon."
+	},
+	"Tachyon Source" : {
+		"name" : "Tachyon Source",
+		"id" : 6,
+		"track" : "Military", 
+		"cost" : 12, 
+		"minCost" : 6, 
+		"energy" : 9, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Tachyon Source Ship parts."
+	},
+	"Plasma Missiles" : {
+		"name" : "Plasma Missiles",
+		"id" : 7,
+		"track" : "Military", 
+		"cost" : 14, 
+		"minCost" : 7, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Plasma Missiles Ship parts. Orange die missile."
+	},
+	"Gluon Computer" : {
+		"name" : "Gluon Computer",
+		"id" : 8,
+		"track" : "Military", 
+		"cost" : 16, 
+		"minCost" : 8, 
+		"energy" : -2, 
+		"initiative" : 2, 
+		"descr" : "You may upgrade Gluon Computer Ship parts. Your equipped Ships are +3 to hit"
+	}
+}

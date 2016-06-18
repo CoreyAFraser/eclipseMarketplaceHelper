@@ -1,0 +1,82 @@
+{
+	"Gauss Shield" : {
+		"name" : "Gauss Shield",
+		"id" : 9,
+		"track" : "Grid", 
+		"cost" : 2, 
+		"minCost" : 2, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Gauss Shield Ship parts. Opponents are -1 to hit your equipped Ships."
+	},
+	"Improved Hull" : {
+		"name" : "Improved Hull",
+		"id" : 10,
+		"track" : "Grid", 
+		"cost" : 4, 
+		"minCost" : 3, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Improved Hull Ship parts. Two hull per slot."
+	},
+	"Fusion Source" : {
+		"name" : "Fusion Source",
+		"id" : 11,
+		"track" : "Grid", 
+		"cost" : 6, 
+		"minCost" : 4, 
+		"energy" : 6, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Fusion Source Ship parts"
+	},
+	"Positron Computer" : {
+		"name" : "Positron Computer",
+		"id" : 12,
+		"track" : "Grid", 
+		"cost" : 8, 
+		"minCost" : 5, 
+		"energy" : -1, 
+		"initiative" : 1, 
+		"descr" : "You may upgrade Positron Computer Ship parts. Your equipped Ships are +2 to hit"
+	},
+	"Advanced Economy" : {
+		"name" : "Advanced Economy",
+		"id" : 13,
+		"track" : "Grid", 
+		"cost" : 10, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may place Population Cubes in the advanced Money squares with your colony ships"
+	},
+	"Tachyon Drive" : {
+		"name" : "Tachyon Drive",
+		"id" : 14,
+		"track" : "Grid", 
+		"cost" : 12, 
+		"minCost" : 6, 
+		"energy" : -3, 
+		"initiative" : 3, 
+		"descr" : "You may upgrade Tachyon Drive Ship parts. Equipped Ships can move 3 hexes per move action."
+	},
+	"Antimatter Cannon" : {
+		"name" : "Antimatter Cannon",
+		"id" : 15,
+		"track" : "Grid", 
+		"cost" : 14, 
+		"minCost" : 7, 
+		"energy" : -4, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Antimatter Cannon Ship parts. Red die cannon."
+	},
+	"Quantum Grid" : {
+		"name" : "Quantum Grid",
+		"id" : 16,
+		"track" : "Grid", 
+		"cost" : 16, 
+		"minCost" : 8, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You receive two additional influence Discs, placed immediately on your influence track"
+	}
+}

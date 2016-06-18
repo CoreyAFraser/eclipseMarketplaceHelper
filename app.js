@@ -9,21 +9,18 @@ errDomain.on('error', function(err) {
 
 errDomain.run(function() {
 	//=========================================Require Dependencies
-	var express      = require('express');
-	var app          = express();
-	var http 		 = require('http').Server(app);
-	var io			 = require('socket.io')(http);
-	var banker   	 = require('./views/banker.json');
-	var playerView   = require('./views/player.json');
-	var player       = require('./objects/player');
+	var express       = require('express');
+	var app           = express();
+	var http 		  = require('http').Server(app);
+	var io			  = require('socket.io')(http);
+	var view          = require('./views/view.json');
+	var techHelper    = require('./helpers/techHelper');
 	//=========================================Require Dependencies
 
-	var bankerSocketId = "";
-	var players = [];
 	var availableTech = [];
-
-	var numberOfReadyPlayers = 0;
-	var playerOrder = [];
+	var gameStarted = false;
+	var round = 1;
+	var compressedTechnology;
 
 	app.get('/', function(req, res){
 		res.sendfile('./views/index.html');
@@ -33,36 +30,51 @@ errDomain.run(function() {
     	res.sendfile('./views/js/index.js');
     });
 
+    app.get('/views.js', function(req, res, next) {
+    	res.sendfile('./views/js/views.js');
+    });
+
 	io.on('connection', function(socket) {
-		var newPlayer = new player.create();
-		newPlayer.socketId = socket.id;
-		players.push(newPlayer);
-	  	console.log('a user connected ' + players.length);
+	  	console.log('a user connected ');
+
+	  	if(gameStarted == true) { 
+			dislayEndTheRoundButton();
+			publishTech();
+		}
+
 	 	socket.on('disconnect', function() {
-	 		for(var i=0;i<players.length;i++) {
-	 			if(players[i].socketId == socket.id) {
-	 				players.splice(i, 1);
-	 			}
-	 		}
-	 		console.log('a user disconnected ' + players.length);
+	 		console.log('a user disconnected');
 	  	});
 
-	  	socket.on('startGame', function(name, fn) {
-	  		for(var i=0;i<players.length;i++) {
-	 			if(players[i].socketId == socket.id) {
-	 				players[i].name = name;
-	 			}
-	 		}
-
-	  		fn(playerView.body);
-	  		numberOfReadyPlayers++;
-	  		if(numberOfReadyPlayers == players.length) {
-	  			generatePlayerOrder();
-	  		}
+	  	socket.on('startGame', function(numberofPlayers) {
+	  		gameStarted = true;
+	  		updateRound();
+	  		dislayEndTheRoundButton();
+	  		availableTech = techHelper.generateInitialTechnology(numberofPlayers);
+			publishTech();
 	  	});
 
   	  	socket.on('buyTech', function (techName) {
-  	  		var index = availableTech.indexOf(techName);
+  	  		var index = -1;
+  	  		for(var i=0;i<compressedTechnology.length;i++) {
+  	  			if(compressedTechnology[i].name == techName) {
+  	  				index = i;
+  	  			}
+  	  		}
+        	if (index != -1) {
+        		if(compressedTechnology[index].qty > 1) {
+        			compressedTechnology[index].qty--;
+        		} else {
+            		compressedTechnology.splice(index, 1);
+            	}
+        	}
+
+        	index = -1;
+        	for(var i=0;i<availableTech.length;i++) {
+  	  			if(availableTech[i].name == techName) {
+  	  				index = i;
+  	  			}
+  	  		}
         	if (index != -1) {
             	availableTech.splice(index, 1);
         	}
@@ -70,49 +82,63 @@ errDomain.run(function() {
 	  		publishTech();
   	  	});
 
-  	  	function generateMoreTech() {
-  	  		for(var i=0;i<3;i++) {
-				tech = "Tech" + (availableTech.length + 1);
-	  			availableTech.push(tech);
-	  		}
+  	  	socket.on('endTheGame', function () {
+  	  		round = 1;
+  	  		gameStarted = false;
+  	  		availableTech = [];
+  	  		resetView();
+  	  	});
 
+  	  	socket.on('endTheRound', function () {
+	  		newAvailableTech = techHelper.generateTechnologyAtEndOfRound();
+	  		for(var i=0;i<newAvailableTech.length;i++) {
+	  			availableTech.push(newAvailableTech[i]);
+	  		}
 			publishTech();
-  	  	}
-
-  	  	function publishTech() {
-  	  		io.emit('clearTech');
-
-	  		for(var i=0;i<availableTech.length;i++) {
-	  			io.emit('addTech', availableTech[i]);
-	  		}
-  	  	}
-
-  	  	function publishPlayerOrder() {
-	  		io.emit('publishPlayerOrder', playerOrder);
-  	  	}
-
-  	  	function generatePlayerOrder() {
-  	  		var tempPlayers = [];
-  	  		for(var i=0;i<players.length;i++) {
-  	  			tempPlayers.push(players[i]);
-  	  		}
-
-  	  		while(tempPlayers.length > 0) {
-  	  			var nextPlayerIndex = Math.floor(Math.random() * tempPlayers.length);
-  	  			playerOrder.push(tempPlayers[nextPlayerIndex]);
-  	  			tempPlayers.splice(nextPlayerIndex, 1);
-  	  		}
-
-			publishPlayerOrder();
-			generateMoreTech();
-  	  	}
+			round++;
+			updateRound();
+			if(round == 9) {
+				displayEndTheGameButton();
+			}
+  	  	});
 	});
 
-	app.set('port', process.env.PORT || 4444);
-	app.set('host', process.env.HOST || '192.168.2.57');
+	function resetView() {
+  	  	io.emit("updateRound", "");
+  	  	displayStartGame();
+  	  	publishTech();
+  	}
+
+  	function updateRound() {
+		io.emit("updateRound", round);
+	}
+
+	function displayStartGame() {
+		io.emit("updateButtons", view.startTheGame);
+	}
+
+  	function dislayEndTheRoundButton() {
+  	  	io.emit("updateButtons", view.endTheRoundButton);
+  	}
+
+  	function displayEndTheGameButton() {
+  	  	io.emit("updateButtons", view.endTheGame);
+  	}
+
+  	function displayJoinGameButton() {
+  	  	io.emit("updateButtons", view.joinTheGame);
+  	}
+
+  	function publishTech() {
+  	  	compressedTechnology = techHelper.compressTechnology(availableTech);
+	  	io.emit('publishTech', compressedTechnology);
+  	}
+
+	//app.set('port', process.env.PORT || 4444);
+	//app.set('host', process.env.HOST || '192.168.2.57');
 
 	var server = http.listen(app.get('port'), app.get('host'), function() {
-		console.log("Express server listening at IP: " + app.get('host') + " on port " + app.get('port'));
+		console.log("Express server running");
 	});
 
 	module.exports = app;
