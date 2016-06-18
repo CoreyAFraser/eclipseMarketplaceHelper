@@ -135,7 +135,7 @@ errDomain.run(function() {
 	  	io.emit('publishTech', compressedTechnology);
   	}
 
-	var server = http.listen(app.get('port'), app.get('host'), function() {
+	var server = http.listen(4444, function() {
 		console.log("Express server running");
 	});
 
