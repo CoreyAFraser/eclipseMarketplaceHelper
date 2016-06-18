@@ -6,18 +6,19 @@ var rare = require('../objects/rare.json');
 var technologyBag = [];
 var technologiesPerRound = 0;
 var techGenerationMap = {
-	"2" : {"inital" : 12, "perRound" : 4},
-	"3" : {"inital" : 14, "perRound" : 6},
-	"4" : {"inital" : 16, "perRound" : 7},
-	"5" : {"inital" : 18, "perRound" : 8},
-	"6" : {"inital" : 20, "perRound" : 9}
+	"2" : {"initial" : 12, "perRound" : 4},
+	"3" : {"initial" : 14, "perRound" : 6},
+	"4" : {"initial" : 16, "perRound" : 7},
+	"5" : {"initial" : 18, "perRound" : 8},
+	"6" : {"initial" : 20, "perRound" : 9},
+	"1" : {"initial" : 125, "perRound" : 0}
 };
 
 module.exports = {
 	generateInitialTechnology : function(numberOfPlayers) {
 		generateTechnologyBag();
-		initialNumberOfTechs = techGenerationMap[numberOfPlayers.toString()].inital;
-		technologiesPerRound = techGenerationMap[numberOfPlayers.toString()].perRound;
+		var initialNumberOfTechs = techGenerationMap[numberOfPlayers.toString()].initial;
+		var technologiesPerRound = techGenerationMap[numberOfPlayers.toString()].perRound;
 		return pullTechnologies(initialNumberOfTechs);
 	},
 	generateTechnologyAtEndOfRound : function() {
@@ -48,8 +49,8 @@ module.exports = {
 };
 
 function pullTechnologies(numberOfTechnologies) {
-	pulledTechnologies = []
-	count = 0;
+	var pulledTechnologies = []
+	var count = 0;
 	while(count < numberOfTechnologies && technologyBag.length > 0) {
   	  	var nextTechnologyIndex = Math.floor(Math.random() * technologyBag.length);
   	  	var nextTechnology = technologyBag[nextTechnologyIndex];

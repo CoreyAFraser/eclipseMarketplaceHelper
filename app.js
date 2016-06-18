@@ -91,7 +91,7 @@ errDomain.run(function() {
   	  	});
 
   	  	socket.on('endTheRound', function () {
-	  		newAvailableTech = techHelper.generateTechnologyAtEndOfRound();
+	  		var newAvailableTech = techHelper.generateTechnologyAtEndOfRound();
 	  		for(var i=0;i<newAvailableTech.length;i++) {
 	  			availableTech.push(newAvailableTech[i]);
 	  		}
