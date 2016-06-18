@@ -1,4 +1,13 @@
+var domain = require('domain');
+var errDomain = domain.createDomain();
 
+errDomain.on('error', function(err) {
+  console.log('Everything is broken forever');
+  console.log((new Date).toUTCString(), ': Process uptime (s)', process.uptime());
+  console.log(err.stack);
+});
+
+errDomain.run(function() {
 	//=========================================Require Dependencies
 	var app = require('express')();
   var server = require('http').Server(app);
@@ -131,3 +140,6 @@
   	compressedTechnology = techHelper.compressTechnology(availableTech);
 	  io.emit('publishTech', compressedTechnology);
   }
+
+  module.exports = app;
+});
