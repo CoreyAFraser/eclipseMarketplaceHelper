@@ -135,9 +135,6 @@ errDomain.run(function() {
 	  	io.emit('publishTech', compressedTechnology);
   	}
 
-	//app.set('port', process.env.PORT || 4444);
-	//app.set('host', process.env.HOST || '192.168.2.57');
-
 	var server = http.listen(app.get('port'), app.get('host'), function() {
 		console.log("Express server running");
 	});
