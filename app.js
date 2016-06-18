@@ -27,87 +27,87 @@
     	res.sendfile('./views/js/index.js');
     });
 
-    app.get('/views.js', function(req, res, next) {
-    	res.sendfile('./views/js/views.js');
-    });
+  app.get('/views.js', function(req, res, next) {
+   	res.sendfile('./views/js/views.js');
+  });
 
 	io.on('connection', function(socket) {
-	  	console.log('a user connected ');
+	 	console.log('a user connected ');
 
-	  	if(gameStarted == true) {
-	  		updateRound();
-			dislayEndTheRoundButton();
+	 	if(gameStarted == true) {
+	 		updateRound();
+  		dislayEndTheRoundButton();
 			publishTech();
-		}
+  	}
 
 	 	socket.on('disconnect', function() {
 	 		console.log('a user disconnected');
-	  	});
+  	});
 
-	  	socket.on('startGame', function(numberofPlayers) {
-	  		gameStarted = true;
-	  		updateRound();
-	  		dislayEndTheRoundButton();
-	  		availableTech = techHelper.generateInitialTechnology(numberofPlayers);
+  	socket.on('startGame', function(numberofPlayers) {
+  		gameStarted = true;
+  		updateRound();
+  		dislayEndTheRoundButton();
+  		availableTech = techHelper.generateInitialTechnology(numberofPlayers);
 			publishTech();
-	  	});
+   	});
 
-  	  	socket.on('buyTech', function (techName) {
-  	  		var index = -1;
-  	  		for(var i=0;i<compressedTechnology.length;i++) {
-  	  			if(compressedTechnology[i].name == techName) {
-  	  				index = i;
-  	  			}
-  	  		}
-        	if (index != -1) {
-        		if(compressedTechnology[index].qty > 1) {
-        			compressedTechnology[index].qty--;
-        		} else {
-            		compressedTechnology.splice(index, 1);
-            	}
-        	}
+  	socket.on('buyTech', function (techName) {
+  	 	var index = -1;
+  	 	for(var i=0;i<compressedTechnology.length;i++) {
+  	 		if(compressedTechnology[i].name == techName) {
+  	 			index = i;
+  	 		}
+  	 	}
+    	if (index != -1) {
+    		if(compressedTechnology[index].qty > 1) {
+     			compressedTechnology[index].qty--;
+     		} else {
+      		compressedTechnology.splice(index, 1);
+      	}
+     	}
 
-        	index = -1;
-        	for(var i=0;i<availableTech.length;i++) {
-  	  			if(availableTech[i].name == techName) {
-  	  				index = i;
-  	  			}
-  	  		}
-        	if (index != -1) {
-            	availableTech.splice(index, 1);
-        	}
+    	index = -1;
+     	for(var i=0;i<availableTech.length;i++) {
+  	 		if(availableTech[i].name == techName) {
+  	 			index = i;
+  	 		}
+  	 	}
+     	if (index != -1) {
+        	availableTech.splice(index, 1);
+     	}
 
-	  		publishTech();
-  	  	});
+	 		publishTech();
+    });
 
-  	  	socket.on('endTheGame', function () {
-  	  		round = 1;
-  	  		gameStarted = false;
-  	  		availableTech = [];
-  	  		resetView();
-  	  	});
+  	socket.on('endTheGame', function () {
+  	 	round = 1;
+  	 	gameStarted = false;
+  	 	availableTech = [];
+  	 	resetView();
+  	});
 
-  	  	socket.on('endTheRound', function () {
-	  		var newAvailableTech = techHelper.generateTechnologyAtEndOfRound();
-	  		for(var i=0;i<newAvailableTech.length;i++) {
-	  			availableTech.push(newAvailableTech[i]);
-	  		}
+  	socket.on('endTheRound', function () {
+	  	var newAvailableTech = techHelper.generateTechnologyAtEndOfRound();
+	  	for(var i=0;i<newAvailableTech.length;i++) {
+	  		availableTech.push(newAvailableTech[i]);
+	  	}
 			publishTech();
-			round++;
+		  round++;
 			updateRound();
 			if(round == 9) {
 				displayEndTheGameButton();
 			}
-  	  	});
+  	});
 	});
 
 	function resetView() {
-  	  	io.emit("updateRound", "");
-  	  	displayStartGame();
-  	  	publishTech();
-  	}
+  	io.emit("updateRound", "");
+  	displayStartGame();
+  	publishTech();
+  }
 
-  	function updateRound() {
+  function updateRound() {
 		io.emit("updateRound", round);
 	}
 
@@ -115,19 +115,19 @@
 		io.emit("updateButtons", view.startTheGame);
 	}
 
-  	function dislayEndTheRoundButton() {
-  	  	io.emit("updateButtons", view.endTheRoundButton);
-  	}
+  function dislayEndTheRoundButton() {
+  	io.emit("updateButtons", view.endTheRoundButton);
+  }
 
-  	function displayEndTheGameButton() {
-  	  	io.emit("updateButtons", view.endTheGame);
-  	}
+  function displayEndTheGameButton() {
+   	io.emit("updateButtons", view.endTheGame);
+  }
 
-  	function displayJoinGameButton() {
-  	  	io.emit("updateButtons", view.joinTheGame);
-  	}
+  function displayJoinGameButton() {
+  	io.emit("updateButtons", view.joinTheGame);
+  }
 
-  	function publishTech() {
-  	  	compressedTechnology = techHelper.compressTechnology(availableTech);
-	  	io.emit('publishTech', compressedTechnology);
-  	}
+  function publishTech() {
+  	compressedTechnology = techHelper.compressTechnology(availableTech);
+	  io.emit('publishTech', compressedTechnology);
+  }

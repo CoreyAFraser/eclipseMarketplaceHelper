@@ -18,7 +18,7 @@ module.exports = {
 	generateInitialTechnology : function(numberOfPlayers) {
 		generateTechnologyBag();
 		var initialNumberOfTechs = techGenerationMap[numberOfPlayers.toString()].initial;
-		var technologiesPerRound = techGenerationMap[numberOfPlayers.toString()].perRound;
+		technologiesPerRound = techGenerationMap[numberOfPlayers.toString()].perRound;
 		return pullTechnologies(initialNumberOfTechs);
 	},
 	generateTechnologyAtEndOfRound : function() {
