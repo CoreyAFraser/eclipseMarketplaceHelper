@@ -1,13 +1,4 @@
-var domain = require('domain');
-var errDomain = domain.createDomain();
 
-errDomain.on('error', function(err) {
-	console.log('Everything is broken forever');
-	console.log((new Date).toUTCString(), ': Process uptime (s)', process.uptime());
-	console.log(err.stack);
-});
-
-errDomain.run(function() {
 	//=========================================Require Dependencies
 	var express       = require('express');
 	var app           = express();
@@ -138,6 +129,3 @@ errDomain.run(function() {
 	var server = http.listen(80, function() {
 		console.log("Express server running");
 	});
-
-	module.exports = app;
-});
