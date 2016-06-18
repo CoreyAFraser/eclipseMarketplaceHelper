@@ -37,7 +37,8 @@ errDomain.run(function() {
 	io.on('connection', function(socket) {
 	  	console.log('a user connected ');
 
-	  	if(gameStarted == true) { 
+	  	if(gameStarted == true) {
+	  		updateRound();
 			dislayEndTheRoundButton();
 			publishTech();
 		}
