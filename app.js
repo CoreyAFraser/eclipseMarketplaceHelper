@@ -126,6 +126,4 @@
 	  	io.emit('publishTech', compressedTechnology);
   	}
 
-	var server = http.listen(80, function() {
-		console.log("Express server running");
-	});
+  var server = http.listen(80);
