@@ -7,7 +7,12 @@
 	var techHelper    = require('./helpers/techHelper');
 	//=========================================Require Dependencies
 
-  server.listen(4444);
+  app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 4444);
+  app.set('host', process.env.OPENSHIFT_NODEJS_IP   || process.env.HOST || '192.168.2.57');
+
+  server.listen(app.get('port'), app.get('host'), function() {
+    console.log("Express server running");
+  });
 
 	var availableTech = [];
 	var gameStarted = false;
