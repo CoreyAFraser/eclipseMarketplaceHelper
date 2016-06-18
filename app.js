@@ -7,7 +7,7 @@
 	var techHelper    = require('./helpers/techHelper');
 	//=========================================Require Dependencies
 
-  server.listen(80);
+  server.listen(4444);
 
 	var availableTech = [];
 	var gameStarted = false;
