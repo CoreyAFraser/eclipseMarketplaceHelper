@@ -1,12 +1,13 @@
 
 	//=========================================Require Dependencies
-	var express       = require('express');
-	var app           = express();
-	var http 		  = require('http').Server(app);
-	var io			  = require('socket.io')(http);
+	var app = require('express')();
+  var server = require('http').Server(app);
+  var io = require('socket.io')(server);
 	var view          = require('./views/view.json');
 	var techHelper    = require('./helpers/techHelper');
 	//=========================================Require Dependencies
+
+  server.listen(80);
 
 	var availableTech = [];
 	var gameStarted = false;
@@ -125,5 +126,3 @@
   	  	compressedTechnology = techHelper.compressTechnology(availableTech);
 	  	io.emit('publishTech', compressedTechnology);
   	}
-
-  var server = http.listen(80);
