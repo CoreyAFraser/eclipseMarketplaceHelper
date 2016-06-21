@@ -6,6 +6,9 @@ var RoundIndicator = React.createClass({
       socket.on('updateRound', this.updateRound);
   },
   updateRound(html) {
+    if(html != "") {
+      html = "Round : " + html;
+    }
     this.setState({round : html});
   },
   render() {
@@ -21,9 +24,32 @@ ReactDOM.render(
   document.getElementById('round')
 );
 
+var ErrorField = React.createClass({
+  getInitialState() {
+    return {error : ""};
+  },
+  componentDidMount() {
+      socket.on('error', this.updateError);
+  },
+  updateError(html) {
+    this.setState({error : html});
+  },
+  render() {
+    return (
+      <div className="error">
+        {this.state.error}
+      </div>
+    );
+  }
+});
+ReactDOM.render(
+  <ErrorField/>,
+  document.getElementById('error')
+);
+
 var ButtonView = React.createClass({
   getInitialState() {
-    return {buttons : "<input id='numberOfPlayers' autocomplete='off' hint='Number Of Players'/><button id='startTheGame' onclick='startTheGame()'>Start Game</button>"};
+    return {buttons : "Enter the Number of Players<input id='numberOfPlayers' autocomplete='off' hint='Number Of Players'/><button id='startTheGame' onclick='startTheGame()'>Start Game</button>"};
   },
   componentDidMount() {
       socket.on('updateButtons', this.updateButtons);
@@ -46,46 +72,91 @@ ReactDOM.render(
   document.getElementById('buttons')
 );
 
+var TechTrack = React.createClass({
+  techClickHandler: function(e) {
+    var ele = e.target.parentElement;
+    if($(ele).hasClass('techNode')) {
+       $(ele).find('.info').css('display', 'inline-block');
+    } else {
+      if($(ele).hasClass('buttons')) {
+        if($(e.target).hasClass('cancel')) {
+          $(ele.parentElement).css('display','none');
+        } else {
+          if($(e.target).hasClass('buy')) {
+            var tech = ele.parentElement.parentElement;
+            socket.emit("buyTech", $(tech).attr('id'));
+            $(ele.parentElement).css('display','none');
+          }
+        }
+      }
+    }
+  },
+  render: function() {
+    var createTechNode = function(tech) {
+      return <div className="techNode" id={tech.name} key={tech.id}>
+                  <div className='quantity'>
+                    {tech.qty} x
+                  </div>
+                  <div className='techName'>
+                    {tech.name}
+                  </div>
+                  <div className='price'>
+                    {tech.cost}/{tech.minCost}
+                  </div>
+                  <div className='info'>
+                    <div className='content'>
+                      <div className="descr">
+                        {tech.descr}
+                      </div>
+                      <div className='extraInfo'>
+                        <div className='energy'>
+                          Energy : {tech.energy}
+                        </div>
+                        <div className='initiative'>
+                          Initiative : {tech.initiative}
+                        </div>
+                      </div>
+                    </div>
+                    <div className='buttons'>
+                      <button className='buy'>
+                        Buy
+                      </button>
+                      <button className='cancel'>
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>;
+    };
+    return <span className="techList" onClick={this.techClickHandler}>
+          {this.props.tech.map(createTechNode)}
+        </span>;
+  }
+});
+
 var TechView = React.createClass({
   getInitialState() {
-    return {availablTech : []};
+    return { availableTech : {
+      "military" : [],
+      "grid" : [],
+      "nano" : [],
+      "rare" : []
+    }};
   },
   componentDidMount() {
       socket.on('publishTech', this.publishTech);
   },
   publishTech(data) {
-    this.setState({availablTech : data});
+    this.setState({availableTech : data});
   },
-  clickHandler: function clickHandler(e) {
-    var nodes = Array.prototype.slice.call( e.currentTarget.children );
-    socket.emit("buyTech", e.target.id);
-  },
-  render() {
-    var techNodes = this.state.availablTech.map(function(tech) {
-      return (
-        <li id={tech.name} key={tech.id}>
-          <div id='quantity'>
-            {tech.qty}
-          </div>
-          {tech.name}
-          <div>
-            <button id={tech.name}>
-              Buy
-            </button>
-          </div>
-          <div>
-            {tech.track}
-          </div>
-          <div>
-            {tech.descr}
-          </div>
-        </li>
-      );
-    });
+  render: function() {
     return (
-      <div className="techList" onClick={this.clickHandler}>
-        {techNodes}
-      </div>
+    <div>
+      <TechTrack tech={this.state.availableTech.military}/>
+      <TechTrack tech={this.state.availableTech.grid}/>
+      <TechTrack tech={this.state.availableTech.nano}/>
+      <TechTrack tech={this.state.availableTech.rare}/>
+    </div>
     );
   }
 });

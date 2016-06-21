@@ -1,0 +1,352 @@
+{
+	"Neutron Bomb" : {
+		"name" : "Neutron Bomb",
+		"id" : 1,
+		"track" : "Military", 
+		"cost" : 2, 
+		"minCost" : 2, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may destroy all Population Cubes from the hex without rolling any dice"
+	},
+	"Star Base" : {
+		"name" : "Star Base",
+		"id" : 2,
+		"track" : "Military", 
+		"cost" : 4, 
+		"minCost" : 3, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may build Star Bases"
+	},
+	"Plasma Cannon" : {
+		"name" : "Plasma Cannon",
+		"id" : 3,
+		"track" : "Military", 
+		"cost" : 6, 
+		"minCost" : 4, 
+		"energy" : -2, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Plasma Cannon Ship parts. Orange die cannon."
+	},
+	"Phase Shield" : {
+		"name" : "Phase Shield",
+		"id" : 4,
+		"track" : "Military", 
+		"cost" : 8, 
+		"minCost" : 5, 
+		"energy" : -1, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Phase Shield Ship parts. Opponents are -2 to hit your equiped Ships."
+	},
+	"Advanced Mining" : {
+		"name" : "Advanced Mining",
+		"id" : 5,
+		"track" : "Military", 
+		"cost" : 10, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may place Population Cubes in the advanced Materials squares with your colony ships"
+	},
+	"Tachyon Source" : {
+		"name" : "Tachyon Source",
+		"id" : 6,
+		"track" : "Military", 
+		"cost" : 12, 
+		"minCost" : 6, 
+		"energy" : 9, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Tachyon Source Ship parts."
+	},
+	"Plasma Missiles" : {
+		"name" : "Plasma Missiles",
+		"id" : 7,
+		"track" : "Military", 
+		"cost" : 14, 
+		"minCost" : 7, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Plasma Missiles Ship parts. Orange die missile. Missiles fire first, but only once."
+	},
+	"Gluon Computer" : {
+		"name" : "Gluon Computer",
+		"id" : 8,
+		"track" : "Military", 
+		"cost" : 16, 
+		"minCost" : 8, 
+		"energy" : -2, 
+		"initiative" : 2, 
+		"descr" : "You may upgrade Gluon Computer Ship parts. Your equipped Ships are +3 to hit"
+	},
+	"Gauss Shield" : {
+		"name" : "Gauss Shield",
+		"id" : 9,
+		"track" : "Grid", 
+		"cost" : 2, 
+		"minCost" : 2, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Gauss Shield Ship parts. Opponents are -1 to hit your equipped Ships."
+	},
+	"Improved Hull" : {
+		"name" : "Improved Hull",
+		"id" : 10,
+		"track" : "Grid", 
+		"cost" : 4, 
+		"minCost" : 3, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Improved Hull Ship parts. Two hull per slot."
+	},
+	"Fusion Source" : {
+		"name" : "Fusion Source",
+		"id" : 11,
+		"track" : "Grid", 
+		"cost" : 6, 
+		"minCost" : 4, 
+		"energy" : 6, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Fusion Source Ship parts"
+	},
+	"Positron Computer" : {
+		"name" : "Positron Computer",
+		"id" : 12,
+		"track" : "Grid", 
+		"cost" : 8, 
+		"minCost" : 5, 
+		"energy" : -1, 
+		"initiative" : 1, 
+		"descr" : "You may upgrade Positron Computer Ship parts. Your equipped Ships are +2 to hit"
+	},
+	"Advanced Economy" : {
+		"name" : "Advanced Economy",
+		"id" : 13,
+		"track" : "Grid", 
+		"cost" : 10, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may place Population Cubes in the advanced Money squares with your colony ships"
+	},
+	"Tachyon Drive" : {
+		"name" : "Tachyon Drive",
+		"id" : 14,
+		"track" : "Grid", 
+		"cost" : 12, 
+		"minCost" : 6, 
+		"energy" : -3, 
+		"initiative" : 3, 
+		"descr" : "You may upgrade Tachyon Drive Ship parts. Equipped Ships can move 3 hexes per move action."
+	},
+	"Antimatter Cannon" : {
+		"name" : "Antimatter Cannon",
+		"id" : 15,
+		"track" : "Grid", 
+		"cost" : 14, 
+		"minCost" : 7, 
+		"energy" : -4, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Antimatter Cannon Ship parts. Red die cannon."
+	},
+	"Quantum Grid" : {
+		"name" : "Quantum Grid",
+		"id" : 16,
+		"track" : "Grid", 
+		"cost" : 16, 
+		"minCost" : 8, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You receive two additional influence Discs, placed immediately on your influence track"
+	},
+	"Nanorobots" : {
+		"name" : "Nanorobots",
+		"id" : 17,
+		"track" : "Nano", 
+		"cost" : 2, 
+		"minCost" : 2, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may build one additional Ship or Structure."
+	},
+	"Fusion Drive" : {
+		"name" : "Fusion Drive",
+		"id" : 18,
+		"track" : "Nano", 
+		"cost" : 4, 
+		"minCost" : 3, 
+		"energy" : -2, 
+		"initiative" : 2, 
+		"descr" : "You may upgrade Fusion Drive Ship parts. Equipped Ships can move 2 hexes per move action."
+	},
+	"Advanced Robotics" : {
+		"name" : "Advanced Robotics",
+		"id" : 19,
+		"track" : "Nano", 
+		"cost" : 6, 
+		"minCost" : 4, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You receive one additional influence Discs, placed immediately on your influence track."
+	},
+	"Orbital" : {
+		"name" : "Orbital",
+		"id" : 20,
+		"track" : "Nano", 
+		"cost" : 8, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may build Orbitals. Orbitals can hold one Population cube from the Money or Science track"
+	},
+	"Advanced Labs" : {
+		"name" : "Advanced Labs",
+		"id" : 21,
+		"track" : "Nano", 
+		"cost" : 10, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may place Population Cubes in the advanced Science squares with your colony ships."
+	},
+	"Monolith" : {
+		"name" : "Monolith",
+		"id" : 22,
+		"track" : "Nano", 
+		"cost" : 12, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may build Monoliths."
+	},
+	"Artifact Key" : {
+		"name" : "Artifact Key",
+		"id" : 23,
+		"track" : "Nano", 
+		"cost" : 14, 
+		"minCost" : 7, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You must take 5 Resources of one type for each Artifact on your hexes."
+	},
+	"Wormhole Generator" : {
+		"name" : "Wormhole Generator",
+		"id" : 24,
+		"track" : "Nano", 
+		"cost" : 16, 
+		"minCost" : 8, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may Explore, Influence, and Move through a hex edge that has a Wormhole on just one side."
+	},
+	"Tractor Beam" : {
+		"name" : "Tractor Beam",
+		"id" : 25,
+		"track" : "Rare", 
+		"cost" : 3, 
+		"minCost" : 2, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "When you have the Tractor Beam Rare Technology, your opponents cannot retreat from battle against you."
+	},
+	"Antimatter Splitter" : {
+		"name" : "Antimatter Splitter",
+		"id" : 26,
+		"track" : "Rare", 
+		"cost" : 5, 
+		"minCost" : 5, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "Allows you to split damage from Antimatter Cannons freely over several targets (including Missles if you have the Point Defense Technology). You need ot be able to his all the targets with the die roll."
+	},
+	"Conifold Field" : {
+		"name" : "Conifold Field",
+		"id" : 27,
+		"track" : "Rare", 
+		"cost" : 5, 
+		"minCost" : 5, 
+		"energy" : -2, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Conifold Field Ship parts. 3 Hull per slot."
+	},
+	"Neutron Absorber" : {
+		"name" : "Neutron Absorber",
+		"id" : 28,
+		"track" : "Rare", 
+		"cost" : 5, 
+		"minCost" : 5, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "Enemy Neutron Bombs have no effect on you. Note: this does not affect Planta's species weakness"
+	},
+	"Sentient Hull" : {
+		"name" : "Sentient Hull",
+		"id" : 29,
+		"track" : "Rare", 
+		"cost" : 5, 
+		"minCost" : 5, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Sentient Hull Ship parts. 1 Hull and your equipped ships are +1 to hit."
+	},
+	"Cloaking Device" : {
+		"name" : "Cloaking Device",
+		"id" : 30,
+		"track" : "Rare", 
+		"cost" : 7, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "Opponents need two ships to pin each of your ships."
+	},
+	"Distortion Shield" : {
+		"name" : "Distortion Shield",
+		"id" : 31,
+		"track" : "Rare", 
+		"cost" : 7, 
+		"minCost" : 6, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "Enemy missles have a -2 modifer to hit"
+	},
+	"Interceptor Bay" : {
+		"name" : "Interceptor Bay",
+		"id" : 32,
+		"track" : "Rare", 
+		"cost" : 9, 
+		"minCost" : 7, 
+		"energy" : -2, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Interceptor Bay Ship parts. Interceptors may not equip this, up to two may be moved with an equipped ship in one move action and do not affect pinning while in the bay. At the end of the move, they are unloaded. Or Ask Dan!"
+	},
+	"Flux Missile" : {
+		"name" : "Flux Missile",
+		"id" : 33,
+		"track" : "Rare", 
+		"cost" : 11, 
+		"minCost" : 8, 
+		"energy" : -2, 
+		"initiative" : 2, 
+		"descr" : "You may upgrade Flux Missile Ship part. Yellow die missile."
+	},
+	"Point Defense" : {
+		"name" : "Point Defense",
+		"id" : 34,
+		"track" : "Rare", 
+		"cost" : 11, 
+		"minCost" : 8, 
+		"energy" : 0, 
+		"initiative" : 0, 
+		"descr" : "After your opponent has rolled and allocated the dive for Missiles of one Ship type, you get to fire all your Cannons once against the incoming Missiles before they hit your fleet. Each die that hits destroys a Missile. Your Computers affect the Point Defense, but your opponent's Shields do not."
+	},
+	"Zero-Point Source" : {
+		"name" : "Zero-Point Source",
+		"id" : 35,
+		"track" : "Rare", 
+		"cost" : 15, 
+		"minCost" : 10, 
+		"energy" : 12, 
+		"initiative" : 0, 
+		"descr" : "You may upgrade Zero-Point Source Ship parts."
+	}
+}

@@ -40,6 +40,10 @@ errDomain.run(function() {
    	res.sendfile('./views/js/views.js');
   });
 
+  app.get('/main.css', function(req, res, next) {
+    res.sendfile('./views/css/main.css');
+  });
+
 	io.on('connection', function(socket) {
 	 	console.log('a user connected ');
 
@@ -54,11 +58,16 @@ errDomain.run(function() {
   	});
 
   	socket.on('startGame', function(numberofPlayers) {
-  		gameStarted = true;
-  		updateRound();
-  		dislayEndTheRoundButton();
-  		availableTech = techHelper.generateInitialTechnology(numberofPlayers);
-			publishTech();
+      if(numberofPlayers > 0 && numberofPlayers < 10) {
+    		clearError();
+        gameStarted = true;
+    		updateRound();
+    		dislayEndTheRoundButton();
+    		availableTech = techHelper.generateInitialTechnology(numberofPlayers);
+  			publishTech();
+      } else {
+        publishNumberOfPlayersError();
+      }
    	});
 
   	socket.on('buyTech', function (techName) {
@@ -85,7 +94,6 @@ errDomain.run(function() {
      	if (index != -1) {
         	availableTech.splice(index, 1);
      	}
-
 	 		publishTech();
     });
 
@@ -139,6 +147,14 @@ errDomain.run(function() {
   function publishTech() {
   	compressedTechnology = techHelper.compressTechnology(availableTech);
 	  io.emit('publishTech', compressedTechnology);
+  }
+
+  function publishNumberOfPlayersError() {
+    io.emit('error', "Please enter a valid number of players (2-9).");
+  }
+
+  function clearError() {
+    io.emit('error', "");
   }
 
   module.exports = app;

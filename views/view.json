@@ -2,5 +2,5 @@
 	"joinGameButton" : "<button id='joinGame' onclick='joinTheGame()'>Join the Game</button>",
 	"endTheRoundButton" : "<button id='endTheRoundButton' onclick='endTheRound()'>End the Round</button>",
 	"endTheGame" : "<button id='endTheGame' onclick='endTheGame()'>End the Game</button>",
-	"startTheGame" : "<input id='numberOfPlayers' autocomplete='off' hint='Number Of Players'/><button id='submit' onclick='startTheGame()'>Start Game</button>"
+	"startTheGame" : "Enter the Number of Players<input id='numberOfPlayers' autocomplete='off' hint='Number Of Players'/><button id='submit' onclick='startTheGame()'>Start Game</button>"
 }

@@ -1,21 +1,15 @@
-var military = require('../objects/military.json');
-var grid = require('../objects/grid.json');
-var nano = require('../objects/nano.json');
-var rare = require('../objects/rare.json');
+var technologies = require('../objects/technologies.json');
+var config = require('../configs/config.json');
 
 var technologyBag = [];
 var technologiesPerRound = 0;
-var techGenerationMap = {
-	"2" : {"initial" : 12, "perRound" : 4},
-	"3" : {"initial" : 14, "perRound" : 6},
-	"4" : {"initial" : 16, "perRound" : 7},
-	"5" : {"initial" : 18, "perRound" : 8},
-	"6" : {"initial" : 20, "perRound" : 9},
-	"1" : {"initial" : 125, "perRound" : 0}
-};
+var techGenerationMap = config.techGenMap;
+var numberOfPlayers = 1;
+var initialTechsInBag = config.initialTechsInBag;
 
 module.exports = {
-	generateInitialTechnology : function(numberOfPlayers) {
+	generateInitialTechnology : function(numOfPlayers) {
+		numberOfPlayers = numOfPlayers;
 		generateTechnologyBag();
 		var initialNumberOfTechs = techGenerationMap[numberOfPlayers.toString()].initial;
 		technologiesPerRound = techGenerationMap[numberOfPlayers.toString()].perRound;
@@ -44,7 +38,30 @@ module.exports = {
 
 		compressedTechnologies.sort(function(a, b) { return a.id - b.id; });
 
-		return compressedTechnologies;
+		var techSortedByTrack = {};
+		techSortedByTrack.military = [];
+		techSortedByTrack.grid = [];
+		techSortedByTrack.nano = [];
+		techSortedByTrack.rare = [];
+
+		for(var i=0;i<compressedTechnologies.length;i++) {
+			switch(compressedTechnologies[i].track) {
+				case "Military" :
+					techSortedByTrack.military.push(compressedTechnologies[i]);
+					break;
+				case "Grid" :
+					techSortedByTrack.grid.push(compressedTechnologies[i]);
+					break;
+				case "Nano" :
+					techSortedByTrack.nano.push(compressedTechnologies[i]);
+					break;
+				case "Rare" :
+					techSortedByTrack.rare.push(compressedTechnologies[i]);
+					break; 
+			}
+		}
+
+		return techSortedByTrack;
 	}
 };
 
@@ -66,52 +83,15 @@ function pullTechnologies(numberOfTechnologies) {
 
 function generateTechnologyBag() {
 	technologyBag = [];
-	technologyBag.push(rare["Zero-Point Source"]);
-	technologyBag.push(rare["Conifold Field"]);
-	technologyBag.push(rare["Flux Missile"]);
-	technologyBag.push(rare["Interceptor Bay"]);
-	technologyBag.push(rare["Sentient Hull"]);
-	technologyBag.push(rare["Antimatter Splitter"]);
-	technologyBag.push(rare["Neutron Absorber"]);
-	technologyBag.push(rare["Distortion Shield"]);
-	technologyBag.push(rare["Cloaking Device"]);
-	technologyBag.push(rare["Point Defense"]);
-	technologyBag.push(rare["Tractor Beam"]);
 
-	for(var i=0;i<3;i++) {
-		technologyBag.push(grid["Tachyon Drive"]);
-		technologyBag.push(nano["Artifact Key"]);
-	}
-
-	for(var i=0;i<4;i++) {
-		technologyBag.push(military["Tachyon Source"]);
-		technologyBag.push(military["Plasma Missiles"]);
-		technologyBag.push(military["Gluon Computer"]);
-		technologyBag.push(grid["Antimatter Cannon"]);
-		technologyBag.push(grid["Quantum Grid"]);
-		technologyBag.push(nano["Monolith"]);
-		technologyBag.push(nano["Wormhole Generator"]);
-	}
-
-	for(var i=0;i<5;i++) {
-		technologyBag.push(military["Neutron Bomb"]);
-		technologyBag.push(military["Star Base"]);
-		technologyBag.push(military["Phase Shield"]);
-		technologyBag.push(military["Advanced Mining"]);
-		technologyBag.push(grid["Gauss Shield"]);
-		technologyBag.push(grid["Positron Computer"]);
-		technologyBag.push(grid["Advanced Economy"]);
-		technologyBag.push(nano["Nanorobots"]);
-		technologyBag.push(nano["Orbital"]);
-		technologyBag.push(nano["Advanced Labs"]);
-	}
-
-	for(var i=0;i<6;i++) {
-		technologyBag.push(military["Plasma Cannon"]);
-		technologyBag.push(grid["Improved Hull"]);
-		technologyBag.push(grid["Fusion Source"]);
-		technologyBag.push(nano["Fusion Drive"]);
-		technologyBag.push(nano["Advanced Robotics"]);
+	for(var tech in technologies) {
+		var techLimit = initialTechsInBag[tech].lessThanSix;
+		if(numberOfPlayers > 6) {
+			techLimit = initialTechsInBag[tech].moreThanSix;
+		}
+		for(var i=0;i<techLimit;i++) {
+			technologyBag.push(technologies[tech]);
+		}
 	}
 
 	var tempTechnologyBag = [];

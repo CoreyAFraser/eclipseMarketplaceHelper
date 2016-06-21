@@ -1,0 +1,138 @@
+html, body {
+	height: 100%;
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 2em;
+}
+
+#error {
+	font-size: .5em;
+	color: red;
+	height: 4%;
+}
+
+#roundContainer {
+	height: 15%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#round, #buttons {
+	text-align: center;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	display: inline-block;
+}
+
+#buttons input {
+	width: 40%;
+	height: 85px;
+	font-size: 1.5em;
+}
+
+#buttons button {
+	width: 100%;
+	height: 85px;
+	font-size: 1em;
+	padding: 5px;
+}
+
+#listOfTech {
+	display: block;
+	height: 75%;
+}
+
+#listOfTech > div {
+	height: 100%;
+}
+
+.techList {
+	height: 25%;
+	width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: -webkit-box;
+    white-space: nowrap;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+}
+
+.techNode {
+	height: 100%;
+	width: 33%;
+    border: black;
+    border-style: solid;
+}
+
+.quantity {
+	font-size: .5em;
+	height: 20%;
+}
+
+.techName {
+	font-size: .8em;
+	white-space: normal;
+	height: 55%;
+	line-height: .9em;
+}
+
+.price {
+	font-size: .5em;
+	height: 15%;
+}
+
+.info {
+	position: absolute;
+    display: none;
+    top: 2%;
+    left: 2%;
+    width: 94%;
+    height: 94%;
+    background-color: #eee;
+    z-index: 2;
+    padding-left: 1%;
+    padding-right: 1%;
+    white-space: normal;
+    border: grey;
+    border-style: groove;
+}
+
+.info .content {
+	min-height: 70%;
+	height: auto !important;
+	height: 70%;
+}
+
+.info .content .descr {
+	padding-bottom: 1%;
+	height: 60%;
+	line-height: 1em;
+}
+
+.info .content .extraInfo {
+	height: 10%;
+}
+
+.info .content .extraInfo .energy, .info .content .extraInfo .initiative {
+	margin-left: 1%;
+	margin-right: 15%;
+	display: inline-block;
+}
+
+.info .buttons {
+	height: 30%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.info button {
+	width: 100%;
+	height: 45%;
+	font-size: 1em;
+	padding: 1%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
