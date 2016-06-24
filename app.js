@@ -111,10 +111,11 @@ errDomain.run(function() {
 	  	}
 			publishTech();
 		  round++;
-			updateRound();
-			if(round == 9) {
+			if(round >= 9) {
+        round = 9;
 				displayEndTheGameButton();
 			}
+      updateRound();
   	});
 	});
 
