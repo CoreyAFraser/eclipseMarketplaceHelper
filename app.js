@@ -127,6 +127,7 @@ errDomain.run(function() {
   	io.emit("updateRound", "");
   	displayStartGame();
   	publishTech();
+    io.emit('publishNewlyAvailableTech', {});
   }
 
   function updateRound() {

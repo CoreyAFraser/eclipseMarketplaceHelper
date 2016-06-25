@@ -179,7 +179,7 @@ var NewTechNode = React.createClass({
                   {tech.name}
                 </div>
                 <div>
-                  - {tech.track}
+                  {tech.track}
                 </div>
               </div>);
     };
@@ -202,8 +202,18 @@ var NewTechView = React.createClass({
       socket.on('publishNewlyAvailableTech', this.publishNewTech);
   },
   publishNewTech(data) {
-    this.setState({newTech : data});
-    $('#newlyAddedTech').css('display','inline-block');
+    if(Object.keys(data).length > 0) {
+      this.setState({newTech : data});
+      $('#newlyAddedTech').css('display','inline-block');
+    } else {
+      this.setState({ newTech : {
+        "military" : [],
+        "grid" : [],
+        "nano" : [],
+        "rare" : []
+      }});
+      $('#newlyAddedTech').css('display','none');
+    }
   },
   okClickHandler: function(e) {
     var ele = e.target;
