@@ -64,6 +64,7 @@ errDomain.run(function() {
     		updateRound();
     		dislayEndTheRoundButton();
     		availableTech = techHelper.generateInitialTechnology(numberofPlayers);
+        publishNewlyAvailableTech(availableTech);
   			publishTech();
       } else {
         publishNumberOfPlayersError();
@@ -109,6 +110,9 @@ errDomain.run(function() {
 	  	for(var i=0;i<newAvailableTech.length;i++) {
 	  		availableTech.push(newAvailableTech[i]);
 	  	}
+      if(newAvailableTech.length > 0) {
+        publishNewlyAvailableTech(newAvailableTech);
+      }
 			publishTech();
 		  round++;
 			if(round >= 9) {
@@ -143,6 +147,11 @@ errDomain.run(function() {
 
   function displayJoinGameButton() {
   	io.emit("updateButtons", view.joinTheGame);
+  }
+
+  function publishNewlyAvailableTech(newlyAvailbleTech) {
+    var compressedTechnology = techHelper.compressTechnology(newlyAvailbleTech);
+    io.emit('publishNewlyAvailableTech', compressedTechnology);
   }
 
   function publishTech() {

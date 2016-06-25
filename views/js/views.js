@@ -93,6 +93,8 @@ var TechTrack = React.createClass({
   },
   render: function() {
     var createTechNode = function(tech) {
+      var energyClass = 'energy energy-' + tech.energy;
+      var initiativeClass = 'initiative initiative-' + tech.initiative;
       return <div className="techNode" id={tech.name} key={tech.id}>
                   <div className='quantity'>
                     {tech.qty} x
@@ -109,10 +111,10 @@ var TechTrack = React.createClass({
                         {tech.descr}
                       </div>
                       <div className='extraInfo'>
-                        <div className='energy'>
+                        <div className={energyClass}>
                           Energy : {tech.energy}
                         </div>
-                        <div className='initiative'>
+                        <div className={initiativeClass}>
                           Initiative : {tech.initiative}
                         </div>
                       </div>
@@ -163,4 +165,71 @@ var TechView = React.createClass({
 ReactDOM.render(
   <TechView/>,
   document.getElementById('listOfTech')
+);
+
+
+var NewTechNode = React.createClass({
+  render: function() {
+    var createTechNode = function(tech) {
+      return (<div className='newTechNode' key={tech.id}>
+                <div>
+                  {tech.qty}x
+                </div>
+                <div>
+                  {tech.name}
+                </div>
+                <div>
+                  - {tech.track}
+                </div>
+              </div>);
+    };
+    return <div>
+          {this.props.tech.map(createTechNode)}
+        </div>;
+  }
+});
+
+var NewTechView = React.createClass({
+  getInitialState() {
+    return { newTech : {
+      "military" : [],
+      "grid" : [],
+      "nano" : [],
+      "rare" : []
+    }};
+  },
+  componentDidMount() {
+      socket.on('publishNewlyAvailableTech', this.publishNewTech);
+  },
+  publishNewTech(data) {
+    this.setState({newTech : data});
+    $('#newlyAddedTech').css('display','inline-block');
+  },
+  okClickHandler: function(e) {
+    var ele = e.target;
+    if($(ele).hasClass('ok')) {
+       $('#newlyAddedTech').css('display','none');
+    }
+  },
+  render: function() {
+    return (
+    <div onClick={this.okClickHandler}>
+      <div className='newTechNodes'>
+        <NewTechNode tech={this.state.newTech.military}/>
+        <NewTechNode tech={this.state.newTech.grid}/>
+        <NewTechNode tech={this.state.newTech.nano}/>
+        <NewTechNode tech={this.state.newTech.rare}/>
+      </div>
+      <div className='buttons'>
+        <button className='ok'>
+          OK
+        </button>
+      </div>
+    </div>
+    );
+  }
+});
+ReactDOM.render(
+  <NewTechView/>,
+  document.getElementById('newlyAddedTech')
 );

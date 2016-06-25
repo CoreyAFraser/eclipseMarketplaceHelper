@@ -29,6 +29,7 @@ html, body {
 	width: 40%;
 	height: 85px;
 	font-size: 1.5em;
+	margin: 1%;
 }
 
 #buttons button {
@@ -36,11 +37,28 @@ html, body {
 	height: 85px;
 	font-size: 1em;
 	padding: 5px;
+	margin: 1%;
 }
 
 #listOfTech {
 	display: block;
 	height: 75%;
+}
+
+#newlyAddedTech {
+	position: absolute;
+    display: none;
+    top: 2%;
+    left: 2%;
+    width: 94%;
+    height: 94%;
+    background-color: #eee;
+    z-index: 2;
+    padding-left: 1%;
+    padding-right: 1%;
+    white-space: normal;
+    border: grey;
+    border-style: groove;
 }
 
 #listOfTech > div {
@@ -122,6 +140,10 @@ html, body {
 	display: inline-block;
 }
 
+.info .content .extraInfo .energy-0, .info .content .extraInfo .initiative-0 {
+	display: none;
+}
+
 .info .buttons {
 	height: 30%;
 	margin-left: auto;
@@ -135,4 +157,45 @@ html, body {
 	padding: 1%;
 	margin-top: 1%;
 	margin-bottom: 1%;
+}
+
+#newlyAddedTech > div {
+	height: 100%;
+}
+
+.newTechNodes {
+	height: 90%;
+	overflow-y: auto;
+}
+
+#newlyAddedTech .buttons {
+	height: 8%;
+}
+
+#newlyAddedTech .buttons button {
+	width: 100%;
+	height: 100%;
+	font-size: .8em;
+	padding: 1%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.newTechNode {
+	width: 100%;
+	font-size: .5em;
+}
+
+.newTechNode div{
+	width: 65%;
+	text-align: left;
+	display: inline-block;
+}
+
+.newTechNode :first-child {
+	width: 9%;
+}
+
+.newTechNode :last-child {
+	width: 25%;
 }
